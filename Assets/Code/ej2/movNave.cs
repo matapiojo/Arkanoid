@@ -46,5 +46,4 @@ public class movNave : MonoBehaviour
        DemilitadorMovimiento();
         Disparo();
     }
-
 }
