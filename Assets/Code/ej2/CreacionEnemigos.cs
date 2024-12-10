@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class CreacionEnemigos : MonoBehaviour
 {
+    [SerializeField] private SistemaDisparos disparos;
 
-    [SerializeField] private GameObject enemigoPrefab;
+    [SerializeField] private Enemigo enemigoPrefab;
     private float ubicacion;
     
     void Start()

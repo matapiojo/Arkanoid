@@ -5,27 +5,15 @@ public class movNave : MonoBehaviour
 
     [SerializeField] private float velocidad;
     [SerializeField] private float ratioDisparo;
-    [SerializeField] private GameObject DisparoPrefab;
-    [SerializeField] private GameObject spawnPoint1;
-    [SerializeField] private GameObject spawnPoint2;
+    
+    [SerializeField] private SistemaDisparos disparos;
     private float temporizador = 0.5f;
 
     void Start()
     {
         
     }
-
-    void Disparo()
-    {
-        temporizador += 1 * Time.deltaTime;
-        
-        if (Input.GetKey(KeyCode.Space) && temporizador > ratioDisparo){   
-            Instantiate(DisparoPrefab, spawnPoint1.transform.position, Quaternion.identity);
-            Instantiate(DisparoPrefab, spawnPoint2.transform.position, Quaternion.identity);
-            temporizador = 0;
-        }
-    }
-
+      
     void Movimiento(){
         float inputV = Input.GetAxisRaw("Vertical");
         float inputH = Input.GetAxisRaw("Horizontal");
@@ -44,6 +32,11 @@ public class movNave : MonoBehaviour
     {
        Movimiento();
        DemilitadorMovimiento();
-        Disparo();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            disparos.ObjectPool.Get();
+            //SistemaDisparos.instance.ObjectPool.Get();
+        }
     }
 }

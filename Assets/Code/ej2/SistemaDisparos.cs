@@ -4,43 +4,49 @@ using UnityEngine.Pool;
 
 public class SistemaDisparos : MonoBehaviour
 {
-    [SerializeField] private Disparo disparoPrefab;
-    private ObjectPool<Disparo> objectPool;
+    
+    public static SistemaDisparos instance;
+
+    [SerializeField] private Bala disparoPrefab;
+    private ObjectPool<Bala> objectPool;
+
+    public ObjectPool<Bala> ObjectPool { get => objectPool; set => objectPool = value; }
 
     private void Awake()
     {
-        objectPool = new ObjectPool<Disparo>(CrearDisparo, GetDisparo, ReleaseDisparo, DestroyDisparo);
+        instance = this;
+        objectPool = new ObjectPool<Bala>(CrearDisparo, GetDisparo, ReleaseDisparo, DestroyDisparo);
 
     }
-    private Disparo CrearDisparo()
+    private Bala CrearDisparo()
     {
-        Disparo disparoCopia = Instantiate(disparoPrefab, transform.position, Quaternion.identity);
+        Bala disparoCopia = Instantiate(disparoPrefab, transform.position, Quaternion.identity);
         disparoCopia.MyPool = objectPool;
         return disparoCopia;
     }
-    public void ReleaseDisparo(Disparo disparo)
+    public void ReleaseDisparo(Bala disparo)
     {
         disparo.gameObject.SetActive(false);
     }
 
-    private void GetDisparo(Disparo disparo)
+    private void GetDisparo(Bala disparo)
     {
         disparo.transform.position = transform.position;
         disparo.gameObject.SetActive(true);
     }
 
-    private void DestroyDisparo(Disparo disparo)
+    private void DestroyDisparo(Bala disparo)
     {
         Destroy(disparo.gameObject);
     }
 
       
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Disparo disparoCopia= objectPool.Get();
+            Bala disparoCopia= objectPool.Get();
             disparoCopia.gameObject.SetActive(true);
         }
-    }
+    }*/
 }

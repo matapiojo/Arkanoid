@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 83587707088099678}
   - component: {fileID: 2732237811570062559}
   - component: {fileID: 1070958628027706910}
+  - component: {fileID: 4707181535826570860}
   m_Layer: 0
   m_Name: Enemigo
   m_TagString: Untagged
@@ -168,6 +169,7 @@ MonoBehaviour:
   velocidad: 2
   pulsePrefab: {fileID: 2067238027349467447, guid: 5e81d8c3e4a88664fa7b44d146bb640f, type: 3}
   spawnPoint: {fileID: 1556573393123180361}
+  disparos: {fileID: 4707181535826570860}
 --- !u!50 &2732237811570062559
 Rigidbody2D:
   serializedVersion: 5
@@ -241,6 +243,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0371008, y: 1.6711928}
   m_EdgeRadius: 0
+--- !u!114 &4707181535826570860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994758227307030985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de42278803a1ce40bc83135a0eaea73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disparoPrefab: {fileID: -7826883662578476755, guid: 5e81d8c3e4a88664fa7b44d146bb640f, type: 3}
 --- !u!1 &4862857914486207486
 GameObject:
   m_ObjectHideFlags: 0

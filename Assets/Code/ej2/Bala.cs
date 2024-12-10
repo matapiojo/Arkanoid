@@ -2,18 +2,17 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Disparo : MonoBehaviour
+public class Bala : MonoBehaviour
 {
 
     [SerializeField] private float velocidad;
-    private ObjectPool<Disparo> myPool;
+    private ObjectPool<Bala> myPool;
     private float timer;
 
-    public ObjectPool<Disparo> MyPool { get => myPool; set => myPool = value; }
+    public ObjectPool<Bala> MyPool { get => myPool; set => myPool = value; }
 
     void Start()
     {
-        Debug.Log(MyPool.CountActive);
         //mala practica, queda en memoria
         //Destroy(gameObject,4);
     }
