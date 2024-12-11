@@ -7,35 +7,35 @@ public class SistemaDisparos : MonoBehaviour
     
     public static SistemaDisparos instance;
 
-    [SerializeField] private Bala disparoPrefab;
-    private ObjectPool<Bala> objectPool;
+    [SerializeField] private Disparo disparoPrefab;
+    private ObjectPool<Disparo> objectPool;
 
-    public ObjectPool<Bala> ObjectPool { get => objectPool; set => objectPool = value; }
+    public ObjectPool<Disparo> ObjectPool { get => objectPool; set => objectPool = value; }
 
     private void Awake()
     {
         instance = this;
-        objectPool = new ObjectPool<Bala>(CrearDisparo, GetDisparo, ReleaseDisparo, DestroyDisparo);
+        objectPool = new ObjectPool<Disparo>(CrearDisparo, GetDisparo, ReleaseDisparo, DestroyDisparo);
 
     }
-    private Bala CrearDisparo()
+    private Disparo CrearDisparo()
     {
-        Bala disparoCopia = Instantiate(disparoPrefab, transform.position, Quaternion.identity);
+        Disparo disparoCopia = Instantiate(disparoPrefab, transform.position, Quaternion.identity);
         disparoCopia.MyPool = objectPool;
         return disparoCopia;
     }
-    public void ReleaseDisparo(Bala disparo)
+    public void ReleaseDisparo(Disparo disparo)
     {
         disparo.gameObject.SetActive(false);
     }
 
-    private void GetDisparo(Bala disparo)
+    private void GetDisparo(Disparo disparo)
     {
         disparo.transform.position = transform.position;
         disparo.gameObject.SetActive(true);
     }
 
-    private void DestroyDisparo(Bala disparo)
+    private void DestroyDisparo(Disparo disparo)
     {
         Destroy(disparo.gameObject);
     }
