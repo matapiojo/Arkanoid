@@ -1,31 +1,30 @@
-using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class Disparo : MonoBehaviour
 {
-
     [SerializeField] private float velocidad;
     private ObjectPool<Disparo> myPoolDisparos;
     private float timer;
+    private Vector2 direccion;
 
     public ObjectPool<Disparo> MyPool { get => myPoolDisparos; set => myPoolDisparos = value; }
 
-    void Start()
+    public void ConfigurarDireccion(Vector2 nuevaDireccion)
     {
-        //mala practica, queda en memoria
-        //Destroy(gameObject,4);
+        direccion = nuevaDireccion.normalized;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.right * velocidad * Time.deltaTime);
+        transform.Translate(direccion * velocidad * Time.deltaTime, Space.World);
         timer += Time.deltaTime;
 
-        if (timer >= 4) {
+        if (timer >= 4)
+        {
             timer = 0;
             myPoolDisparos.Release(this);
         }
     }
+
 }

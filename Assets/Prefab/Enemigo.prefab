@@ -167,9 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 1
-  pulsePrefab: {fileID: 2067238027349467447, guid: 5e81d8c3e4a88664fa7b44d146bb640f, type: 3}
-  spawnPoint: {fileID: 1556573393123180361}
-  disparos: {fileID: 0}
+  spawnPoint: {fileID: 5991713853868454505}
+  anguloMaximo: 30
 --- !u!50 &2732237811570062559
 Rigidbody2D:
   serializedVersion: 5
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de42278803a1ce40bc83135a0eaea73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disparoPrefab: {fileID: -7826883662578476755, guid: 5e81d8c3e4a88664fa7b44d146bb640f, type: 3}
+  disparoPrefab: {fileID: 3883635594533125542, guid: 5e81d8c3e4a88664fa7b44d146bb640f, type: 3}
 --- !u!1 &4862857914486207486
 GameObject:
   m_ObjectHideFlags: 0

@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 990943709}
   m_Layer: 0
   m_Name: Nave
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1314,8 +1314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 6
-  ratioDisparo: 0.5
-  disparos: {fileID: 1590924064}
+  ratioDisparo: 0.2
 --- !u!114 &1590924064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,7 +1327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de42278803a1ce40bc83135a0eaea73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disparoPrefab: {fileID: -7826883662578476755, guid: 5e81d8c3e4a88664fa7b44d146bb640f, type: 3}
+  disparoPrefab: {fileID: 3883635594533125542, guid: 5e81d8c3e4a88664fa7b44d146bb640f, type: 3}
 --- !u!1 &1634242986
 GameObject:
   m_ObjectHideFlags: 0

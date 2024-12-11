@@ -4,49 +4,47 @@ using UnityEngine.Pool;
 
 public class SistemaDisparos : MonoBehaviour
 {
-    
     public static SistemaDisparos instance;
 
     [SerializeField] private Disparo disparoPrefab;
     private ObjectPool<Disparo> objectPool;
 
-    public ObjectPool<Disparo> ObjectPool { get => objectPool; set => objectPool = value; }
+    public ObjectPool<Disparo> ObjectPool { get => objectPool; }
 
     private void Awake()
     {
         instance = this;
-        objectPool = new ObjectPool<Disparo>(CrearDisparo, GetDisparo, ReleaseDisparo, DestroyDisparo);
-
+        objectPool = new ObjectPool<Disparo>(CrearDisparo, ActivarDisparo, DesactivarDisparo, DestruirDisparo);
     }
+
     private Disparo CrearDisparo()
     {
-        Disparo disparoCopia = Instantiate(disparoPrefab, transform.position, Quaternion.identity);
+        Disparo disparoCopia = Instantiate(disparoPrefab);
         disparoCopia.MyPool = objectPool;
         return disparoCopia;
     }
-    public void ReleaseDisparo(Disparo disparo)
+
+    private void ActivarDisparo(Disparo disparo)
+    {
+        disparo.gameObject.SetActive(true);
+    }
+
+    private void DesactivarDisparo(Disparo disparo)
     {
         disparo.gameObject.SetActive(false);
     }
 
-    private void GetDisparo(Disparo disparo)
-    {
-        disparo.transform.position = transform.position;
-        disparo.gameObject.SetActive(true);
-    }
-
-    private void DestroyDisparo(Disparo disparo)
+    private void DestruirDisparo(Disparo disparo)
     {
         Destroy(disparo.gameObject);
     }
 
-      
-    /*void Update()
+    public void Disparar(Vector2 posicion, Vector2 direccion)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Bala disparoCopia= objectPool.Get();
-            disparoCopia.gameObject.SetActive(true);
-        }
-    }*/
+        Disparo disparo = objectPool.Get();
+        disparo.transform.position = posicion;
+        disparo.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg);
+        disparo.ConfigurarDireccion(direccion);
+    }
+
 }
