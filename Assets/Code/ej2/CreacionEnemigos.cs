@@ -29,6 +29,5 @@ public class CreacionEnemigos : MonoBehaviour
             Instantiate(enemigoPrefab, ubicacionRandom, Quaternion.identity);
             yield return new WaitForSeconds(Random.Range(2f,5f));
         }
-        
     }
 }

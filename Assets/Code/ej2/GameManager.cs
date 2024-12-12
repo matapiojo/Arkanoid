@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public movNave player;
     [SerializeField] private int vidas = 3;
     private float distancia = 0f;
     [SerializeField] private TextMeshProUGUI textoVidas;
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         ActualizarUI();
         if (vidas <= 0)
         {
+            vidas = 0;
             GameOver();
         }
     }
@@ -43,7 +44,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Esto no quiere imprimir un número normal con 1 decimal. 
-        distancia = Mathf.Round((Time.deltaTime) * 10.0f)*0.1f;
+        //distancia = Mathf.Round((Time.deltaTime + distancia) * 10.0f)*0.1f;
+        distancia = (Time.deltaTime + distancia);
+
         ActualizarUI();
     }
 
@@ -57,12 +60,14 @@ public class GameManager : MonoBehaviour
     {
         textoVidas.text = "Vidas: " + vidas;
         textoPuntaje.text = "Puntaje: " + puntaje;
-        textoDistancia.text = "Distancia: " + distancia + " Km";
+        textoDistancia.text = "Distancia: " + distancia.ToString("F1") + " Km";
     }
 
     private void GameOver()
     {
         Debug.Log("Game Over!");
         //Agregar pantalla perdiste o volver a iniciar 
+        player.Destruir();
+        
     }
 }

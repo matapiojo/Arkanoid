@@ -28,7 +28,6 @@ public class Disparo : MonoBehaviour
             timer = 0;
             myPoolDisparos.Release(this);
         }
-
     }
 
 
@@ -46,7 +45,8 @@ public class Disparo : MonoBehaviour
         else if (direccion.x < 0 && collision.CompareTag("Player")) // Bala hacia la izquierda (enemigo dispara)
         {
             Debug.Log("Bala de un enemigo golpeó al jugador.");
-            movNave jugador = collision.GetComponent<movNave>();
+            movNave jugador = collision.GetComponentInParent<movNave>();
+            Debug.Log(jugador);
             if (jugador != null)
             {
                 jugador.RecibeDanio(); // Reduce la vida del jugador

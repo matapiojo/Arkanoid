@@ -13,7 +13,9 @@ public class Enemigo : MonoBehaviour
     void Start()
     {
         // La nave debe tener el tag "Player"
-        objetivo = GameObject.FindWithTag("Player").transform;
+        //objetivo = GameObject.FindWithTag("Player").transform;
+        objetivo = GameManager.instance.player.transform;
+        
         StartCoroutine(SpawnDisparo());
     }
 
@@ -30,7 +32,7 @@ public class Enemigo : MonoBehaviour
     {
         while (true)
         {
-            if (objetivo != null)
+            if (objetivo.gameObject.activeSelf)
             {
                 Vector2 direccionDisparo = (objetivo.position - spawnPoint.transform.position).normalized;
 

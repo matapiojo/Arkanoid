@@ -46,5 +46,4 @@ public class SistemaDisparos : MonoBehaviour
         disparo.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg);
         disparo.ConfigurarDireccion(direccion);
     }
-
 }

@@ -4,6 +4,7 @@ public class movNave : MonoBehaviour
 {
     [SerializeField] private float velocidad;
     [SerializeField] private float ratioDisparo;
+    [SerializeField] private Animator anim;
 
     private float temporizador = 0.5f;
 
@@ -23,6 +24,17 @@ public class movNave : MonoBehaviour
 
     }
 
+    public void Destruir()
+    {
+        anim.SetTrigger("muerte");
+        Invoke("deactive", 1f);
+        
+    }
+
+    void deactive()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void RecibeDanio()
     {
