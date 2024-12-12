@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoPuntaje;
     [SerializeField] private TextMeshProUGUI textoDistancia;
     private int puntaje = 0;
+    [SerializeField] private Image gameOverUI;
+
 
     private void Awake()
     {
@@ -68,6 +72,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over!");
         //Agregar pantalla perdiste o volver a iniciar 
         player.Destruir();
-        
+        gameOverUI.gameObject.SetActive(true);
+    }
+
+    public void Salir()
+    {
+        Application.Quit(); 
+    }
+
+    public void IniciarJuego()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

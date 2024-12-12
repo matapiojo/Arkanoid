@@ -36,7 +36,7 @@ public class Disparo : MonoBehaviour
         // Verifica la dirección en X de la bala
         if (direccion.x > 0 && collision.CompareTag("Enemigo")) // Bala hacia la derecha (jugador dispara)
         {
-            Debug.Log("Bala del jugador golpeó a un enemigo.");
+            //Debug.Log("Bala del jugador golpeó a un enemigo.");
             Destroy(collision.gameObject); // Destruye al enemigo
             myPoolDisparos.Release(this); // Libera la bala
             GameManager.instance.AgregarPuntaje(10); // Aumenta el puntaje
@@ -44,7 +44,7 @@ public class Disparo : MonoBehaviour
         }
         else if (direccion.x < 0 && collision.CompareTag("Player")) // Bala hacia la izquierda (enemigo dispara)
         {
-            Debug.Log("Bala de un enemigo golpeó al jugador.");
+            //Debug.Log("Bala de un enemigo golpeó al jugador.");
             movNave jugador = collision.GetComponentInParent<movNave>();
             Debug.Log(jugador);
             if (jugador != null)

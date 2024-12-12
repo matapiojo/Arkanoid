@@ -1,32 +1,24 @@
 using System.Collections;
+using Unity.Collections;
 using UnityEngine;
 
 public class CreacionEnemigos : MonoBehaviour
 {
     [SerializeField] private SistemaDisparos disparos;
     [SerializeField] private Enemigo enemigoPrefab;
-    
-    private float ubicacion;
+    private Vector3 ubicacionPantalla;
     
     void Start()
     {
+        
         StartCoroutine(SpawnEnemigo());
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-      
     }
 
     IEnumerator SpawnEnemigo()
     {
         for (int i = 0; i < 10; i++){
-            ubicacion = Random.Range(-4f, 4f);
-            Vector2 ubicacionRandom = new Vector2(10, ubicacion);
-            Instantiate(enemigoPrefab, ubicacionRandom, Quaternion.identity);
+            ubicacionPantalla = Camera.main.ViewportToWorldPoint(new Vector3(1f, Random.value, 1f))+ Vector3.right;
+            Instantiate(enemigoPrefab, ubicacionPantalla, Quaternion.identity);
             yield return new WaitForSeconds(Random.Range(2f,5f));
         }
     }
