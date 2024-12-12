@@ -13,6 +13,7 @@ public class movNave : MonoBehaviour
         DemilitadorMovimiento();
 
         temporizador -= Time.deltaTime;
+        
         if (Input.GetKeyDown(KeyCode.Space) && temporizador <= 0)
         {
             Vector2 direccionDisparo = Vector2.right; // Disparo hacia la derecha
@@ -21,6 +22,13 @@ public class movNave : MonoBehaviour
         }
 
     }
+
+
+    public void RecibeDanio()
+    {
+        GameManager.instance.RestarVida();
+    }
+
 
     void Movimiento()
     {
